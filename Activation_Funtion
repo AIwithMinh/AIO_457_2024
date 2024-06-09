@@ -1,4 +1,4 @@
-# Bài 1 
+                 ###############################Bài 1 ##########################
 import math
 def calc_f1_score(tp, fp, fn):
     s= (tp/(tp+fp))
@@ -6,4 +6,99 @@ def calc_f1_score(tp, fp, fn):
     f1= (2*s*r)/(s+r)
     return f1
 print(calc_f1_score(tp=2,fp=4,fn=5))
-# Bài 2 
+                                               
+
+                 ###############################Bài 2#############################
+import math 
+def is_number (n):
+    try:
+        float(n)
+        return True
+    except ValueError:
+            return False 
+a=input('nhập vào một số nguyên:')
+is_number(a)
+                                                
+
+                 ################################Bài 4##############################
+import math 
+def calc_sig(x):
+    s=1/(1+math.e**(-x))
+    return s 
+calc_sig(2)
+                                               
+
+
+                  #############################Bài 5################################
+import math
+def calc_elu(x):
+    if x<=0:
+     s=0.01*(math.e**x-1)
+     return s
+    else: 
+       s=x
+       return s 
+print(calc_elu(-1))
+                     ###########################Bài 6################################
+def calc_activation_func(x,act_name):
+    if act_name == 'sigmoid':
+        return 1/(1+math.e**(-x))
+    else: 
+          if x<=0:
+            return 0 
+          else:
+            return x 
+print(calc_activation_func(3,'sigmoid'))
+                    #############################Bài 7################################
+import math
+def calc_ae(y,y_hat):
+    s= abs(y-y_hat)
+    return s 
+print(calc_ae(2,9))
+                     #############################Bài 8################################
+import math
+def calc_ae(y,y_hat):
+    s= abs(y-y_hat)
+    a=s**2
+    return a 
+print(calc_ae(2,1))
+                     #############################Bai 9##################################
+import math 
+def approx_cos(x,n):
+    for i in range(n):
+       s=math.cos(x)
+       return s
+print(approx_cos(3.14,10))
+                     #############################Bai 10##################################
+def sin_approx(x, n_terms):
+    sin_x = 0
+    for n in range(n_terms):
+        a = (-1)**n
+        b =  x**(2*n + 1)
+        c = math.factorial(2*n + 1)
+        sin_x += (a*b)/c
+    return sin_x
+print(sin_approx(3.14,10))
+                      ############################Bai 11#################################
+import math 
+def approx_sinh(x,n_term):
+    c= 0
+    for n in range (n_term):
+     s = x**(2*n+1)
+     e = math.factorial(2*n+1)
+     c=c+s/e
+    return c
+print(approx_sinh(1,10))
+                       ############################Bài 12##################################
+import math
+
+def cosh_approx(x, n_terms):
+    cosh_x = 0
+    for n in range(n_terms):
+        numerator = x**(2*n )
+        denominator = math.factorial(2*n)
+        cosh_x += numerator / denominator
+    return cosh_x
+print(cosh_approx(3.14,10))
+                       
+
