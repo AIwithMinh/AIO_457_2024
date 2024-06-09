@@ -1,1 +1,9 @@
-
+# Bài 1 
+import math
+def calc_f1_score(tp, fp, fn):
+    s= (tp/(tp+fp))
+    r= (tp/(tp+fn))
+    f1= (2*s*r)/(s+r)
+    return f1
+print(calc_f1_score(tp=2,fp=4,fn=5))
+# Bài 2 
