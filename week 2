@@ -1,0 +1,150 @@
+# BÀI 1 
+def max_kernal(num_list, k ):
+    result =[]
+    admin=[]
+    for element in num_list:
+       result.append (element)
+       if len(result) == k:
+          admin.append(max(result))
+          del result[0]
+    return admin          
+num_list = [3, 4, 5, 1, -44, 5, 10, 12 , 33, 1]
+k = 3 
+print(max_kernal(num_list, k))
+# Bài 2 
+def character_count(word):
+    word = word.lower()
+    character_statistic = {}
+    for i in word:
+        if i in character_statistic:
+            character_statistic[i] +=1 
+        else: 
+            character_statistic[i]= 1 
+    return character_statistic
+word ="smiles"
+print(character_count("smiles"))
+# Bài 3
+def count_word(file_path):
+    counter = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
+        text = file.read()
+        words = text.split()
+        for word in words:
+            if word in counter:
+                counter[word] += 1
+            else:
+                counter[word] = 1
+    return counter
+file_path = '/content/P1_data.txt'
+result = count_word(file_path)
+print(result['man'])
+#Bài 4 
+def levenshtein_distance(token_1, token_2): 
+# token 1 : số hàng
+    # token 2: số cột 
+    distance  = [[0]*(len(token_2)+1) for i in range (len(token_1) +1)] 
+    for t1 in range (len(token_1)+1): 
+       distance[t1][0] = t1
+    for t2 in range (len(token_2)+1):
+       distance[0][t2] = t2 
+    for t1 in range(1,len(token_1)+1):
+      for t2 in range(1,len(token_2) +1): 
+          if (token_1[t1-1]) == (token_2[t2-1]):
+            distance[t1][t2] = distance[t1-1][t2-1]
+          else:
+            a = distance[t1][t2-1]
+            b = distance[t1-1][t2]
+            c = distance[t1-1][t2-1]
+            distance[t1][t2] = min(a,b,c) +1 
+          
+    return distance[len(token_1)][len(token_2)] 
+print(levenshtein_distance('hola','hello'))
+# Bài 5 
+def check_the_number(N):
+    list_of_numbers = [1, 2, 3, 4]  
+    result = False 
+    
+    if N in list_of_numbers:
+        result = True
+    
+    return result
+print(check_the_number(2))
+#Bài 6 
+def my_function(data, max, min):
+    result = []
+    for i in data:
+      if i< min:
+        result.append(min)
+      elif i > max:
+        result.append(max)
+      else:
+        result.append(i)
+    return result
+data = [10,2,5,0,1]
+max = 2 
+min = 1 
+print (my_function(data,max,min))
+# Bài 7 
+def my_function(x,y):
+  x.extend(y) 
+  return x
+
+list_num1= ['a',2,3]
+list_num2 = [1,1]
+list_num3 = [0,0]
+print(my_function(list_num2,list_num3))
+# Bài 8 
+def my_function ( n ) :
+    return min(n)
+
+
+my_list = [1, 2, 3, -1]
+print ( my_function ( my_list ) )
+# Bài 9 
+def my_function ( n ) :
+  return(max(n))
+my_list = [1,9,9,0]
+print ( my_function ( my_list ) )
+#Bài 10 
+def My_function ( integers, number):
+  for i in my_list:
+     if i == number:
+        print(True)
+     else:
+        print(False)
+my_list = [1, 2, 3, 4]
+print ( My_function ( my_list , 2) )
+# Bài 11
+def my_function (list_nums) :
+  var = 0
+  for i in list_nums :
+     var += i
+  return var/len(list_nums)
+list_nums = [4,6,8]
+print(my_function(list_nums))
+# Bài 12
+def my_function ( data ) :
+  var = []
+  for i in data :
+# Your code here
+# Neu i chia het cho 3 thi them i vào list var
+    if i % 3 == 0:
+      var.append(i)
+  return var
+# assert my_function ([3 , 9 , 4 , 5]) == [3 , 9]
+print ( my_function ([1 , 2 , 3 , 5 , 6]) )
+# Bài 13 
+def my_function(y):
+    var = 1
+    while y > 1:
+        var *= y
+        y -= 1
+    return var
+
+# Kiểm tra đề bài
+assert my_function(8) == 40320
+print(my_function(4))
+# Bài 14
+
+
+
