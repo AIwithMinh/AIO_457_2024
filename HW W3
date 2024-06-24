@@ -1,1 +1,135 @@
+#Bài 1 
+import torch
+import torch . nn as nn
+data = torch . Tensor ([1 , 2 , 3])
+softmax_function = nn . Softmax ( dim =0)
+output = softmax_function ( data )
+#assert round ( output [0]. item () , 2) == 0.09
+round ( output [1]. item () , 4)
+output
+#Bài 2 
+import torch
+import torch . nn as nn
+class MySoftmax ( nn . Module ) :
+    def __init__ ( self ):
+        super () . __init__ ()
+    def forward(self, x):
+        exp_x = torch.exp(x)  
+        softmax_x = exp_x / exp_x.sum()  
+        return softmax_x
+data = torch . Tensor ([5 , 2 , 4])
+my_softmax = MySoftmax ()
+output = my_softmax ( data )
+#assert round ( output [ -1]. item () ,2) == 0.26
+
+output
+#Bài 3 
+import torch
+import torch . nn as nn
+class MySoftmax ( nn . Module ) :
+    def __init__ ( self ) :
+        super () . __init__ ()
+    def forward ( self , x ) :
+        exp_x = torch.exp ( x )
+        softmax_x = exp_x / exp_x.sum ()
+        return softmax_x
+data = torch.Tensor ([1 , 2 , 300000000])
+my_softmax = MySoftmax ()
+output = my_softmax ( data )
+#assert round ( output [0]. item () , 2) == 0.0
+output
+#Bài 4
+import torch
+import torch . nn as nn
+class SoftmaxStable ( nn . Module ):
+  def __init__ ( self ) :
+     super () . __init__ ()
+  def forward ( self , x ) :
+    x_max = torch .max(x , dim =0 , keepdims = True )
+    x_exp = torch . exp ( x - x_max . values )
+    partition = x_exp .sum (0 , keepdims = True )
+    return x_exp / partition
+data = torch . Tensor ([1 , 2 , 3])
+softmax_stable = SoftmaxStable ()
+output = softmax_stable ( data )
+#assert round ( output [ -1]. item () , 2) == 0.67
+output
+# Bài 5 
+from abc import ABC, abstractmethod
+
+class Person(ABC):
+    def __init__(self, name: str, yob: int):
+        self._name = name
+        self._yob = yob
+
+    def get_yob(self):
+        return self._yob
+
+    @abstractmethod
+    def describe(self):
+        pass
+
+class Student(Person):
+    def __init__(self, name: str, yob: int, grade: str):
+        super().__init__(name, yob)
+        self._grade = grade
+
+    def describe(self):
+        print(f"Student Name: {self._name}, Year of Birth: {self._yob}, Grade: {self._grade}")
+
+student1 = Student(name="studentZ2023", yob=2011, grade="6")
+#assert student1._yob == 2011
+student1.describe()
+# Bài 6 
+from abc import ABC, abstractmethod
+
+class Person(ABC):
+    def __init__(self, name: str, yob: int):
+        self._name = name
+        self._yob = yob
+
+    def get_yob(self):
+        return self._yob
+
+    @abstractmethod
+    def describe(self):
+        pass
+
+class Teacher(Person):
+    def __init__(self, name: str, yob: int, subject: str):
+        super().__init__(name, yob)  # Gọi __init__ của lớp cha Person
+        self._subject = subject
+
+    def describe(self):
+        print(f"Teacher Name: {self._name}, Year of Birth: {self._yob}, Subject: {self._subject}")
+
+teacher1 = Teacher(name="teacherZ2023", yob=1991, subject="History")
+assert teacher1._yob == 1991
+teacher1.describe()
+#bài 7 
+from abc import ABC, abstractmethod
+
+class Person(ABC):
+    def __init__(self, name: str, yob: int):
+        self._name = name
+        self._yob = yob
+
+    def get_yob(self):
+        return self._yob
+
+    @abstractmethod
+    def describe(self):
+        pass
+
+class Doctor (Person):
+    def __init__(self, name: str, yob: int, specialist: str):
+        super().__init__(name, yob)  # Gọi __init__ của lớp cha Person
+        self._specialist = specialist
+
+    def describe(self):
+        print(f"Doctor - Name: {self._name}, yob: {self._yob}, specialist: {self._specialist}")
+
+Doctor1 = Doctor(name="doctorZ2023", yob=1981, specialist="endocrinologists")
+assert Doctor1._yob == 1981
+Doctor1.describe()
 
